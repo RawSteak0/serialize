@@ -144,9 +144,17 @@ int main(){
 
   node.destroy_children();
 
+  std::string comment_test = "//endline comment\n{/*comment*/\"number\"/*comment*/:/*comment*/b[2]/*comment*/}";
+
+  if (node.deserialize_readable(comment_test)) {
+    printf("comment test: \n\n%s\n\n", node.serialize_readable(false).c_str());
+  } else {
+    printf("Cannot decode comment test\n");
+  }
+
   std::string invalid_code = "{\r\n"
    "\"incomplete\" : n";
-
+  
   printf("About to decode invalid code\n\n");
   
   node.destroy_children();
@@ -155,6 +163,5 @@ int main(){
   } else {
     printf("Cannot decode invalid RSSN\n");
   }
-  
   return 0;
 }
