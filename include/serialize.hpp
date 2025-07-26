@@ -1223,7 +1223,6 @@ namespace Serialize{
           break;
         }
         if (c == COMPOUND_NODE_END_ARRAY_R) {
-          state.value_constructions.push_back(state.current_construction);
           state.current_construction = "";
           if (!parse_insert_generic(state.node, state.current_key,
                                     state.value_constructions,
@@ -1245,6 +1244,7 @@ namespace Serialize{
           state.current_state = Error;
           break;
         }
+	break;
       }
         
       case ConstructValueParsable: {
